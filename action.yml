@@ -20,6 +20,10 @@ inputs:
   github-token:
     description: GitHub WebHook Secret Token
     required: true
+  pr-number:
+    description: PR number of target for auto-merge.
+    required: false
+
 runs:
   using: "node12"
   main: "src/index.js"
