@@ -13,8 +13,10 @@ async function autoMerge() {
     const octokit = new github.GitHub(myToken);
 
     const ref = tools.context.ref;
-    const pull_number = core.getInput("pr-number") || Number(ref.split("/")[2]);
+    const pull_number = Number(core.getInput("pr-number")) || Number(ref.split("/")[2]);
 
+    core.info(`PR Number is ${pull_number}`);
+    
     const reviews = await octokit.pulls.listReviews({
       ...github.context.repo,
       pull_number,
